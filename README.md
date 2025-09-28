@@ -45,7 +45,7 @@ The primary objective is to centralize, clean, and transform data from multiple 
 
 
 
-
+<br><br><br><br>
 
 
 
@@ -61,7 +61,7 @@ Services:
 
 
 
-
+<br><br><br><br>
 
 
 
@@ -83,7 +83,7 @@ Key:
 
 
 
-
+<br><br><br><br>
 
 
 Data sources:
@@ -105,3 +105,52 @@ Data sources:
 
 3. CPT (Current Procedural Terminology) Codes:
     - A standardized system to describe medical, surgical, and diagnostic procedures.
+
+
+
+
+<br><br><br><br><br><br><br>
+
+
+Steps:
+1. Create data sources:
+    - hospital a database
+    - hospital b database
+    - claims csv files
+    - cpt_codes csv files
+
+Created two SQL instances in Cloud SQL in GCP with specific configurations and instance names as follows:
+* hospital-a-mysql-db
+* hospital-b-mysql-db  
+
+
+    1. Create cloud SQL mysql instances ==> (hospital-a-mysql-db, hospital-b-mysql-db)
+    2. All all network to access the instance
+    3. Create database ==> hospital_a_db, hospital_b_db
+    4. Create remote user
+        - myuser
+        - mypass
+    5. Login to cloud sql studio
+        - Run the scripts for creating the tab;es
+        - Insert data (imported data)
+
+    6. For claims and cpt_codes the file will be sent every month by upstream person in GCS.
+
+
+2. Landing zone
+
+Created a bucket in GCS for the landing layer:
+* healthcare_bucket-28092025
+    - data
+        - has all the data that is ingetsed in the  cloud SQL
+    - landing
+        - Claims and cpt_codes files
+        - 
+    - configs
+        - Metadata driven approch
+            - Full Load (when there is less data and no need to chenge frequently)
+            - Incremental Load (changes frequently) 
+    - temp
+
+
+
