@@ -4,6 +4,7 @@
 
 This project focuses on building scalable data lake in GCP for Revenue Cycle Management in the healthcare domain.
 
+
 The primary objective is to centralize, clean, and transform data from multiple sources, enabling healthcare providers and insurance companies to streamline:
     Billing
     Claims processing
@@ -12,29 +13,41 @@ The primary objective is to centralize, clean, and transform data from multiple 
 
 
 
+
+
+
+
+
+
 **Project Architecture**
 
 
 1. Data Sources: 
-        - All the data from different sources that come from upstream (software engineers).  
-        - These sources are the databases
+    - All the data from different sources that come from upstream (software engineers).  
+    - These sources are the databases
 2. Landing:
-        - The data is ingested from the databases to the Google Cloud Storage.
+    - The data is ingested from the databases to the Google Cloud Storage.
 3. Medillion Architecture:
-        - Bronze:
-            - The files are moved from the landing layer to the bronze layer.
-            - This bronze layer is build on the BigQuery
-        - Silver:
-            - Slowly Changing Dimension (SCDs)
-            - Common Data Model (CDM)
-        - Gold:
-            - Data Modeling
-            - Visualization
+    - Bronze:
+        - The files are moved from the landing layer to the bronze layer.
+        - This bronze layer is build on the BigQuery
+    - Silver:
+        - Slowly Changing Dimension (SCDs)
+        - Common Data Model (CDM)
+    - Gold:
+        - Data Modeling
+        - Visualization
 4. Orchestration:
-        - Schedule, orchestrate and manage pipelines.
+    - Schedule, orchestrate and manage pipelines.
 
 
 ![alt text](image.png)
+
+
+
+
+
+
 
 
 Services:
@@ -45,6 +58,11 @@ Services:
 - Cloud SQL: Store the transactional dbs
 - GitHub: Store and version control
 - CloudBuild: Automated deployment
+
+
+
+
+
 
 
 Key:
@@ -58,6 +76,11 @@ Key:
 8. CI/CD
 9. Automation
 10. Optimization
+
+
+
+
+
 
 
 
@@ -82,5 +105,3 @@ Data sources:
 
 3. CPT (Current Procedural Terminology) Codes:
     - A standardized system to describe medical, surgical, and diagnostic procedures.
-
-4. NPI
