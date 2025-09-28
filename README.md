@@ -154,3 +154,9 @@ Created a bucket in GCS for the landing layer:
 
 
 
+<br><br><br><br><br><br><br><br><br><br>
+*** Data Ingestion ***
+
+- Create dataproc cluster
+- 1-ingestion ==> hospital-a-mysql (tables) ==> gcs_bucket/landing/hospital-a/
+- 2-ingestion ==> hospital-b-mysql (tables) ==> gcs_bucket/landing/hospital-b/
