@@ -155,8 +155,41 @@ Created a bucket in GCS for the landing layer:
 
 
 <br><br><br><br><br><br><br><br><br><br>
-*** Data Ingestion ***
+
+**Data Ingestion**
 
 - Create dataproc cluster
 - 1-ingestion ==> hospital-a-mysql (tables) ==> gcs_bucket/landing/hospital-a/
 - 2-ingestion ==> hospital-b-mysql (tables) ==> gcs_bucket/landing/hospital-b/
+
+
+hospital-a-mysql --> patients ---> full data ---> gcs_bucket/landing/hospital-a/patients
+
+- audit table (for modified date)
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br>
+
+
+**Bronze**
+
+External Table:
+- the data is in GCS and the table structure is in the BigQuery.
+Managed Table: 
+- the data is availble in the BigQuery
+
+<br><br>
+
+- gcs_bucket/landing/hospital-a/* ==> external tables ==> bigquery/bronze_dataset/*
+- gcs_bucket/landing/hospital-b/* ==> external tables ==> bigquery/bronze_dataset/*
+- gcs_bucket/landing/claims/*.csv ==> dataproc ==> bigquery/bronze_dataset/claims
+- gcs_bucket/landing/cptcodes/*.csv ==> dataproc ==> bigquery/bronze_dataset/cpt_codes
+
+
+<br><br>
+
+**Silver**
+- bigquery/bronze_dataset/* ===> Full Load + truncate
+- bigquery/bronze_dataset/* ===> CDM. + SCD2 
